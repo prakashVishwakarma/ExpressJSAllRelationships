@@ -1,7 +1,17 @@
 // app.js
-const express = require('express');
+import express from 'express';
+import connectDb from './Database/connectDB.js';
 const app = express();
 const port = 3000;
+
+// database connection function
+connectDb()
+  .then((res) => {
+    console.log("connection to database is successfull");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 // Define a route
 app.get('/', (req, res) => {
